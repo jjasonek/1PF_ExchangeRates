@@ -1,5 +1,8 @@
 package cz.firstpf.exchangerates.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -9,6 +12,8 @@ import java.time.LocalDateTime;
  * @author Jiri Jasonek
  **/
 
+@Getter
+@Setter
 final public class ExchangeRate {
 
     String shortName;
@@ -26,5 +31,4 @@ final public class ExchangeRate {
     int version;
     BigDecimal cnbMid;
     BigDecimal ecbMid;
-
 }

@@ -5,6 +5,8 @@ import cz.firstpf.exchangerates.entity.ExchangeRate;
 import java.util.List;
 
 /**
+ * Service calling {@link cz.firstpf.exchangerates.client.ExchangeRatesClient}
+ *
  * @author Jiri Jasonek
  **/
 
