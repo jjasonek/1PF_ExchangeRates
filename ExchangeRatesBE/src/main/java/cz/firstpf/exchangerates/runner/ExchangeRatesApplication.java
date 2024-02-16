@@ -7,12 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Spring boot application runner.
  *
  * @author Jiri Jasonek
- *
  **/
 
-@SpringBootApplication
-public class ExchangeratesApplication {
+@SpringBootApplication(scanBasePackages = {"cz.firstpf.exchangerates"})
+public class ExchangeRatesApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ExchangeratesApplication.class, args);
+        SpringApplication.run(ExchangeRatesApplication.class, args);
     }
 }
