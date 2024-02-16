@@ -12,14 +12,21 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Web layer tests for {@link ExchangeRatesController}
+ *
+ * @author Jiri Jasonek
+ */
+
 @WebMvcTest(ExchangeRatesController.class)
 @ContextConfiguration(classes = ExchangeRatesApplication.class)
-class ExchangeRatesControllerTest {
+final class ExchangeRatesControllerTest {
 
     private static final String EXCHANGE_RATES = "/exchangerates/api/v1";
 
@@ -30,13 +37,37 @@ class ExchangeRatesControllerTest {
 
     @Test
     void getExchangeRates_success() throws Exception {
-        when(exchangeRatesService.getExchangeRates(true)).thenReturn(new ArrayList<>());
+        when(exchangeRatesService.getExchangeRates(anyBoolean())).thenReturn(new ArrayList<>());
+
         this.mockMvc.perform(get(EXCHANGE_RATES)
                         .param("useDb", String.valueOf(true))
                 )
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(content().string("[]"));
-//                .andExpect(jsonPath("$").value(Collections.EMPTY_LIST));
+    }
+
+    @Test
+    void getExchangeRates_failsOnException() throws Exception {
+        when(exchangeRatesService.getExchangeRates(anyBoolean())).thenThrow(new RuntimeException(""));
+
+        this.mockMvc.perform(get(EXCHANGE_RATES)
+                        .param("useDb", String.valueOf(true))
+                )
+                .andExpect(status().isInternalServerError());
+    }
+
+    @Test
+    void getExchangeRates_failsOnMissingRequestParameter() throws Exception {
+
+        this.mockMvc.perform(get(EXCHANGE_RATES))
+                .andExpect(status().isInternalServerError());
+    }
+
+    @Test
+    void getExchangeRates_failsOnBadUrl() throws Exception {
+
+        this.mockMvc.perform(get(""))
+                .andExpect(status().isInternalServerError());
     }
 }
