@@ -18,12 +18,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public final class ExchangeRatesExceptionHandler {
 
-    //TODO Maybe not exception at all
-//    @ExceptionHandler(value = {DuplicateEntityException.class})
-//    public ResponseEntity<> handleDuplicateEntityException() {
-//        return new ResponseEntity(HttpStatus.ACCEPTED);
-//    }
-
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<String> handleException(Exception exception) {
         String stacktrace = ExceptionUtils.getStackTrace(exception);
