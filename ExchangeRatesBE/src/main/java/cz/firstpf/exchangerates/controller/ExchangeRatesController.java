@@ -31,7 +31,7 @@ public final class ExchangeRatesController {
     public ResponseEntity<List<ExchangeRateDto>> getExchangeRates(@RequestParam boolean useDb) {
         log.info(String.format("Processing request GET with using parameter useDb: %b.", useDb));
         List<ExchangeRateDto> exchangeRates = exchangeRatesService.getExchangeRates(useDb);
-        return new ResponseEntity<List<ExchangeRateDto>>(exchangeRates, HttpStatus.OK);
+        return new ResponseEntity<>(exchangeRates, HttpStatus.OK);
     }
 
 }
