@@ -1,4 +1,4 @@
-package cz.firstpf.exchangerates.entity;
+package cz.firstpf.exchangerates.dto;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @EqualsAndHashCode
-final public class ExchangeRate {
+final public class ExchangeRateDto {
 
     String shortName;
     LocalDateTime validFrom;

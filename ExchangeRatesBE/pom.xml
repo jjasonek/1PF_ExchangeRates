@@ -17,7 +17,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
-        <apache.commons-lang3.version>3.14.0</apache.commons-lang3.version>
+        <commons-lang3.version>3.14.0</commons-lang3.version>
+        <modelmapper.version>3.2.0</modelmapper.version>
     </properties>
 
     <dependencies>
@@ -47,7 +48,12 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${apache.commons-lang3.version}</version>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${modelmapper.version}</version>
         </dependency>
     </dependencies>
 

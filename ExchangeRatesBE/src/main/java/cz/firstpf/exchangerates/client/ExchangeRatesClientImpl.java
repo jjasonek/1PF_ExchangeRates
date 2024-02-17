@@ -1,6 +1,6 @@
 package cz.firstpf.exchangerates.client;
 
-import cz.firstpf.exchangerates.entity.ExchangeRate;
+import cz.firstpf.exchangerates.dto.ExchangeRateDto;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -29,13 +29,13 @@ public final class ExchangeRatesClientImpl implements ExchangeRatesClient {
             .build(WEB_API_KEY_VALUE);
 
     @Override
-    public List<ExchangeRate> getExchangeRates() {
+    public List<ExchangeRateDto> getExchangeRates() {
 
         return Arrays.stream(
                         Objects.requireNonNull(restClient.get()
                                 .uri(uri)
                                 .retrieve()
-                                .body(ExchangeRate[].class))
+                                .body(ExchangeRateDto[].class))
                 )
                 .toList();
     }

@@ -1,6 +1,6 @@
 package cz.firstpf.exchangerates.service;
 
-import cz.firstpf.exchangerates.entity.ExchangeRate;
+import cz.firstpf.exchangerates.dto.ExchangeRateDto;
 
 import java.util.List;
 
@@ -12,6 +12,6 @@ import java.util.List;
 
 public interface ExchangeRatesService {
 
-    List<ExchangeRate> getExchangeRates(boolean useDb);
+    List<ExchangeRateDto> getExchangeRates(boolean useDb);
 
 }
