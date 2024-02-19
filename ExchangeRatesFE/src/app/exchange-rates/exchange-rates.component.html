@@ -1,1 +1,24 @@
-<p>exchange-rates works!</p>
+<div>
+  <button (click)="fetchResponse(externalAddress)">Get</button>
+</div>
+
+<ul>
+  <li *ngFor="let exchangeRate of exchangeRates; index as i">
+    {{exchangeRate.shortName}}
+    {{exchangeRate.validFrom | date: "dd. MM. yyyy"}}
+    {{exchangeRate.name}}
+    {{exchangeRate.country}}
+    {{exchangeRate.move}}
+    {{exchangeRate.amount}}
+    {{exchangeRate.valBuy}}
+    {{exchangeRate.valSell}}
+    {{exchangeRate.valMid}}
+    {{exchangeRate.currBuy}}
+    {{exchangeRate.currSell}}
+    {{exchangeRate.currMid}}
+    {{exchangeRate.version}}
+    {{exchangeRate.cnbMid}}
+    {{exchangeRate.ecbMid}}
+    <button>Detail</button>
+  </li>
+</ul>
