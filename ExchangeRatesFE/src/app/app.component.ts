@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import {ExchangeRatesComponent} from "./exchange-rates/exchange-rates.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    RouterLink,
+    RouterLinkActive,
     RouterOutlet,
     ExchangeRatesComponent
   ],
@@ -13,5 +15,4 @@ import {ExchangeRatesComponent} from "./exchange-rates/exchange-rates.component"
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'ExchangeRatesFE';
 }
