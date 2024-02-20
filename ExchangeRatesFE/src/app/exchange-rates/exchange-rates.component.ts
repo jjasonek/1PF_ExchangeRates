@@ -33,7 +33,6 @@ import {ExchangeRateDetailComponent} from "../exchange-rate-detail/exchange-rate
     ExchangeRateDetailComponent,
     RouterLink,
     RouterOutlet,
-    // RouterOutlet
   ],
   templateUrl: './exchange-rates.component.html',
   styleUrl: './exchange-rates.component.css'
