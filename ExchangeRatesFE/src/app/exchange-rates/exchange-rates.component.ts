@@ -13,6 +13,11 @@ import {
   MatTable
 } from "@angular/material/table";
 import {ExchangeRateDetailComponent} from "../exchange-rate-detail/exchange-rate-detail.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {SourceAddresse} from "../model/source-addresse";
+import {FormsModule} from "@angular/forms";
+import {MatInput} from "@angular/material/input";
 
 @Component({
   selector: 'app-exchange-rates',
@@ -33,6 +38,10 @@ import {ExchangeRateDetailComponent} from "../exchange-rate-detail/exchange-rate
     ExchangeRateDetailComponent,
     RouterLink,
     RouterOutlet,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    MatInput,
   ],
   templateUrl: './exchange-rates.component.html',
   styleUrl: './exchange-rates.component.css'
@@ -45,10 +54,23 @@ export class ExchangeRatesComponent {
   ) {
   }
 
-  externalAddress: string = "https://webapi.developers.erstegroup.com/api/csas/public/sandbox/v2/rates/exchangerates?web-api-key=c52a0682-4806-4903-828f-6cc66508329e";
-  beAppAddress: string = "";
+  selectedAddress: string = "";
 
   exchangeRates: ExchangeRate[] = [];
+  sourceAddresses: SourceAddresse[] = [
+    {
+      value: "https://webapi.developers.erstegroup.com/api/csas/public/sandbox/v2/rates/exchangerates?web-api-key=c52a0682-4806-4903-828f-6cc66508329e",
+      viewValue: "External address"
+    },
+    {
+      value: "http://localhost:8080/exchangerates/api/v1?useDb=false",
+      viewValue: "Local Back End Application"
+    },
+    {
+      value: "http://localhost:8080/exchangerates/api/v1?useDb=true",
+      viewValue: "Local Back End Application with DB"
+    }
+  ]
   displayedColumns: string[] = [
     'shortName',
     'validFrom',
@@ -69,6 +91,7 @@ export class ExchangeRatesComponent {
   ];
 
   fetchResponse(address: string) {
+    alert("selected address = " + this.selectedAddress)
     this.exchangeRatesService.getExchangeRates(address)
       .subscribe(rates => this.exchangeRates = rates.body? rates.body : [])
   }
@@ -80,4 +103,6 @@ export class ExchangeRatesComponent {
       }
     });
   }
+
+
 }

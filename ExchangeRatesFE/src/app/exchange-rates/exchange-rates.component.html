@@ -1,5 +1,10 @@
 <div>
-  <button (click)="fetchResponse(externalAddress)">Get</button>
+    <select matNativeControl [(ngModel)]="selectedAddress">
+      @for (address of sourceAddresses; track address) {
+        <option [value]="address.value">{{ address.viewValue }}</option>
+      }
+    </select>
+  <button (click)="fetchResponse(selectedAddress)">Get</button>
 </div>
 
 <table mat-table [dataSource]="exchangeRates" class="mat-elevation-z8">
@@ -71,3 +76,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
