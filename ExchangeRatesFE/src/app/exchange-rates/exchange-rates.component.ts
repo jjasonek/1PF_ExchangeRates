@@ -63,11 +63,11 @@ export class ExchangeRatesComponent {
       viewValue: "External address"
     },
     {
-      value: "http://localhost:8080/exchangerates/api/v1?useDb=false",
+      value: "/exchangerates/api/v1?useDb=false",
       viewValue: "Local Back End Application"
     },
     {
-      value: "http://localhost:8080/exchangerates/api/v1?useDb=true",
+      value: "/exchangerates/api/v1?useDb=true",
       viewValue: "Local Back End Application with DB"
     }
   ]
@@ -91,7 +91,7 @@ export class ExchangeRatesComponent {
   ];
 
   fetchResponse(address: string) {
-    alert("selected address = " + this.selectedAddress)
+    // alert("selected address = " + this.selectedAddress)
     this.exchangeRatesService.getExchangeRates(address)
       .subscribe(rates => this.exchangeRates = rates.body? rates.body : [])
   }
