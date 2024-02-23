@@ -22,3 +22,10 @@ ExchangeRatesFE
 - CORS solved by setting a proxy in src/app/proxy/proxy.conf.json
 
 - run ExchangeRatesFE by CLI: ng serve -o --poll=2000 / ng serve --poll=2000 / ng serve
+
+
+
+GIT branches
+- main
+- develop
+- angular_initial_app (created after the new Angular pllilcation was created)
