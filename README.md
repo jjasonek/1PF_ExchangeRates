@@ -19,6 +19,11 @@ ExchangeRatesFE
 - Package Manager: npm 10.4.0
 - OS: win32 x64
 
+- The application was created without app.module.ts file. 
+	ng new my-app 
+	instead of 
+	ng new my-app --no-standalone
+
 - CORS solved by setting a proxy in src/app/proxy/proxy.conf.json
 
 - run ExchangeRatesFE by CLI: ng serve -o --poll=2000 / ng serve --poll=2000 / ng serve
