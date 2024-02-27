@@ -23,10 +23,9 @@ ExchangeRatesFE
 	ng new my-app 
 	instead of 
 	ng new my-app --no-standalone
-
 - CORS solved by setting a proxy in src/app/proxy/proxy.conf.json
-
 - run ExchangeRatesFE by CLI: ng serve -o --poll=2000 / ng serve --poll=2000 / ng serve
+- install node.js and npm, runs the application
 
 
 

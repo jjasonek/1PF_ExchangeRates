@@ -42,14 +42,12 @@
                 </goals>
               </execution>
               <execution>
-                <id>webpack build dev</id>
+                <id>npm start</id>
                 <goals>
                   <goal>npm</goal>
                 </goals>
-                <phase>generate-resources</phase>
                 <configuration>
-                  <arguments>run build</arguments>
-                  <npmInheritsProxyConfigFromMaven>false</npmInheritsProxyConfigFromMaven>
+                  <arguments>run start</arguments>
                 </configuration>
               </execution>
             </executions>
