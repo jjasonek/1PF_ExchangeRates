@@ -6,24 +6,32 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
  * Entity class for the exchange rates
+ * I this simple example we don't need to override nighter equals() nor hashCode() methods.
+ * The primary key {@link #hash} is counted from the DTO {@link cz.firstpf.exchangerates.dto.ExchangeRateDto}
+ * Equality is tested only according to the primary key.
+ * Don't use this approach in more complex cases.
  *
  * @author Jiri Jasonek
  **/
 
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "exchange_rates")
 @Entity
-public final class ExchangeRate {
+public final class ExchangeRate implements Serializable {
 
     @Id
     private long hash;
