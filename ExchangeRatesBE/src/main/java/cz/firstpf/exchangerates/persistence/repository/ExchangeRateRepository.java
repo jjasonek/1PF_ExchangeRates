@@ -14,6 +14,5 @@ import java.util.Optional;
  **/
 
 public interface ExchangeRateRepository extends CrudRepository<ExchangeRate, Long> {
-    Optional<ExchangeRate> findByHash(@NonNull long hash);
     boolean existsByHash(@NonNull long hash);
 }
