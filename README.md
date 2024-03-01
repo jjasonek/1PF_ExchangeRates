@@ -1,7 +1,7 @@
 # 1PF_ExchangeRates
 
 ExchangeRatesBE
-- Sprong Boot 3.2.2
+- Spring Boot 3.2.2
 - Java 17
 - run unit tests: mvn test
 - run application mvn spring-boot:run
