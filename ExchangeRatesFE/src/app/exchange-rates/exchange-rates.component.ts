@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ExchangeRatesService} from "../service/exchange-rates.service";
 import {ExchangeRate} from "../model/exchange-rate";
 import {DatePipe, NgForOf} from "@angular/common";
-import {Router, RouterLink, RouterOutlet} from '@angular/router';
+import {Router, RouterOutlet} from '@angular/router';
 import {
   MatCell,
   MatCellDef,
@@ -36,12 +36,11 @@ import {MatInput} from "@angular/material/input";
     MatRowDef,
     MatHeaderRowDef,
     ExchangeRateDetailComponent,
-    RouterLink,
     RouterOutlet,
     MatFormFieldModule,
     MatSelectModule,
     FormsModule,
-    MatInput,
+    MatInput
   ],
   templateUrl: './exchange-rates.component.html',
   styleUrl: './exchange-rates.component.css'
@@ -91,7 +90,6 @@ export class ExchangeRatesComponent {
   ];
 
   fetchResponse(address: string) {
-    // alert("selected address = " + this.selectedAddress)
     this.exchangeRatesService.getExchangeRates(address)
       .subscribe(rates => this.exchangeRates = rates.body? rates.body : [])
   }
