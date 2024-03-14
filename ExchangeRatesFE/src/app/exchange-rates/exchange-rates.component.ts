@@ -1,23 +1,16 @@
-import {Component} from '@angular/core';
-import {ExchangeRatesService} from "../service/exchange-rates.service";
-import {ExchangeRate} from "../model/exchange-rate";
-import {DatePipe, NgForOf} from "@angular/common";
-import {Router, RouterOutlet} from '@angular/router';
-import {
-  MatCell,
-  MatCellDef,
-  MatColumnDef,
-  MatHeaderCell,
-  MatHeaderCellDef,
-  MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
-  MatTable
-} from "@angular/material/table";
-import {ExchangeRateDetailComponent} from "../exchange-rate-detail/exchange-rate-detail.component";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatSelectModule} from "@angular/material/select";
-import {SourceAddresse} from "../model/source-addresse";
-import {FormsModule} from "@angular/forms";
-import {MatInput} from "@angular/material/input";
+import { Component } from '@angular/core';
+import { ExchangeRatesService } from "../service/exchange-rates.service";
+import { ExchangeRate } from "../model/exchange-rate";
+import { DatePipe, NgForOf } from "@angular/common";
+import { Router, RouterOutlet } from '@angular/router';
+import { MatTableModule } from "@angular/material/table";
+import { ExchangeRateDetailComponent } from "../exchange-rate-detail/exchange-rate-detail.component";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSelectModule } from "@angular/material/select";
+import { SourceAddresse } from "../model/source-addresse";
+import { FormsModule } from "@angular/forms";
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
   selector: 'app-exchange-rates',
@@ -25,22 +18,14 @@ import {MatInput} from "@angular/material/input";
   imports: [
     NgForOf,
     DatePipe,
-    MatTable,
-    MatColumnDef,
-    MatHeaderCell,
-    MatHeaderCellDef,
-    MatCell,
-    MatCellDef,
-    MatHeaderRow,
-    MatRow,
-    MatRowDef,
-    MatHeaderRowDef,
+    MatTableModule,
     ExchangeRateDetailComponent,
     RouterOutlet,
     MatFormFieldModule,
     MatSelectModule,
     FormsModule,
-    MatInput
+    MatInputModule,
+    MatButtonModule
   ],
   templateUrl: './exchange-rates.component.html',
   styleUrl: './exchange-rates.component.css'

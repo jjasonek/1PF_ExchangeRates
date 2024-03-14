@@ -1,15 +1,16 @@
-import {Component} from '@angular/core';
-import {MatList, MatListItem} from "@angular/material/list";
-import {ExchangeRate} from '../model/exchange-rate'
-import {Router, RouterLink} from "@angular/router";
+import { Component } from '@angular/core';
+import { MatListModule } from "@angular/material/list";
+import { ExchangeRate } from '../model/exchange-rate'
+import { Router, RouterLink } from "@angular/router";
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
   selector: 'app-exchange-rate-detail',
   standalone: true,
   imports: [
-    MatList,
-    MatListItem,
-    RouterLink
+    MatListModule,
+    RouterLink,
+    MatButtonModule
   ],
   templateUrl: './exchange-rate-detail.component.html',
   styleUrl: './exchange-rate-detail.component.css'

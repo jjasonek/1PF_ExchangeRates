@@ -1,79 +1,87 @@
-<div>
-    <select matNativeControl [(ngModel)]="selectedAddress">
-      @for (address of sourceAddresses; track address) {
-        <option [value]="address.value">{{ address.viewValue }}</option>
-      }
-    </select>
-  <button (click)="fetchResponse(selectedAddress)">Get</button>
+<div class="container">
+  <div>
+    <mat-form-field>
+      <mat-label>Choose source</mat-label>
+      <select matNativeControl [(ngModel)]="selectedAddress">
+        @for (address of sourceAddresses; track address) {
+          <option [value]="address.value">{{ address.viewValue }}</option>
+        }
+      </select>
+    </mat-form-field>
+    <button mat-raised-button (click)="fetchResponse(selectedAddress)">Get</button>
+  </div>
+
+  <table mat-table [dataSource]="exchangeRates" class="mat-elevation-z8">
+    <ng-container matColumnDef="shortName">
+      <th mat-header-cell *matHeaderCellDef> Short Name</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.shortName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="validFrom">
+      <th mat-header-cell *matHeaderCellDef> Valid From</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.validFrom | date: "dd. MM. yyyy" }}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef> Country</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.country }}</td>
+    </ng-container>
+    <ng-container matColumnDef="move">
+      <th mat-header-cell *matHeaderCellDef> Move</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.move }}</td>
+    </ng-container>
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef> Amount</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.amount }}</td>
+    </ng-container>
+    <ng-container matColumnDef="valBuy">
+      <th mat-header-cell *matHeaderCellDef> Value Buy</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.valBuy }}</td>
+    </ng-container>
+    <ng-container matColumnDef="valSell">
+      <th mat-header-cell *matHeaderCellDef> Value Sell</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.valSell }}</td>
+    </ng-container>
+    <ng-container matColumnDef="valMid">
+      <th mat-header-cell *matHeaderCellDef> Value Mid</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.valMid }}</td>
+    </ng-container>
+    <ng-container matColumnDef="currBuy">
+      <th mat-header-cell *matHeaderCellDef> Curr Buy</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.currBuy }}</td>
+    </ng-container>
+    <ng-container matColumnDef="currSell">
+      <th mat-header-cell *matHeaderCellDef> Curr Sell</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.currSell }}</td>
+    </ng-container>
+    <ng-container matColumnDef="currMid">
+      <th mat-header-cell *matHeaderCellDef> Curr Mid</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.currMid }}</td>
+    </ng-container>
+    <ng-container matColumnDef="version">
+      <th mat-header-cell *matHeaderCellDef> Version</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.version }}</td>
+    </ng-container>
+    <ng-container matColumnDef="cnbMid">
+      <th mat-header-cell *matHeaderCellDef> CNB Mid</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.cnbMid }}</td>
+    </ng-container>
+    <ng-container matColumnDef="ecbMid">
+      <th mat-header-cell *matHeaderCellDef> ECB Mid</th>
+      <td mat-cell *matCellDef="let exchangeRate"> {{ exchangeRate.ecbMid }}</td>
+    </ng-container>
+    <ng-container matColumnDef="button">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let exchangeRate">
+        <button (click)="detailButtonClick(exchangeRate)">Detail</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
 </div>
-
-<table mat-table [dataSource]="exchangeRates" class="mat-elevation-z8">
-  <ng-container matColumnDef="shortName">
-    <th mat-header-cell *matHeaderCellDef> Short Name </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.shortName}} </td>
-  </ng-container>
-  <ng-container matColumnDef="validFrom">
-    <th mat-header-cell *matHeaderCellDef> Valid From </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.validFrom | date: "dd. MM. yyyy"}} </td>
-  </ng-container>
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.name}} </td>
-  </ng-container>
-  <ng-container matColumnDef="country">
-    <th mat-header-cell *matHeaderCellDef> Country </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.country}} </td>
-  </ng-container>
-  <ng-container matColumnDef="move">
-    <th mat-header-cell *matHeaderCellDef> Move </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.move}} </td>
-  </ng-container>
-  <ng-container matColumnDef="amount">
-    <th mat-header-cell *matHeaderCellDef> Amount </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.amount}} </td>
-  </ng-container>
-  <ng-container matColumnDef="valBuy">
-    <th mat-header-cell *matHeaderCellDef> Value Buy </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.valBuy}} </td>
-  </ng-container>
-  <ng-container matColumnDef="valSell">
-    <th mat-header-cell *matHeaderCellDef> Value Sell </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.valSell}} </td>
-  </ng-container>
-  <ng-container matColumnDef="valMid">
-    <th mat-header-cell *matHeaderCellDef> Value Mid </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.valMid}} </td>
-  </ng-container>
-  <ng-container matColumnDef="currBuy">
-    <th mat-header-cell *matHeaderCellDef> Curr Buy </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.currBuy}} </td>
-  </ng-container>
-  <ng-container matColumnDef="currSell">
-    <th mat-header-cell *matHeaderCellDef> Curr Sell </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.currSell}} </td>
-  </ng-container>
-  <ng-container matColumnDef="currMid">
-    <th mat-header-cell *matHeaderCellDef> Curr Mid </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.currMid}} </td>
-  </ng-container>
-  <ng-container matColumnDef="version">
-    <th mat-header-cell *matHeaderCellDef> Version </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.version}} </td>
-  </ng-container>
-  <ng-container matColumnDef="cnbMid">
-    <th mat-header-cell *matHeaderCellDef> CNB Mid </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.cnbMid}} </td>
-  </ng-container>
-  <ng-container matColumnDef="ecbMid">
-    <th mat-header-cell *matHeaderCellDef> ECB Mid </th>
-    <td mat-cell *matCellDef="let exchangeRate"> {{exchangeRate.ecbMid}} </td>
-  </ng-container>
-  <ng-container matColumnDef="button">
-    <th mat-header-cell *matHeaderCellDef> </th>
-    <td mat-cell *matCellDef="let exchangeRate"> <button (click)="detailButtonClick(exchangeRate)" >Detail</button> </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
 
