@@ -8,7 +8,7 @@
         }
       </select>
     </mat-form-field>
-    <button mat-raised-button (click)="fetchResponse(selectedAddress)">Get</button>
+    <button class="get-button" mat-raised-button color="primary" (click)="fetchResponse(selectedAddress)">Get</button>
   </div>
 
   <table mat-table [dataSource]="exchangeRates" class="mat-elevation-z8">
@@ -75,7 +75,7 @@
     <ng-container matColumnDef="button">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let exchangeRate">
-        <button (click)="detailButtonClick(exchangeRate)">Detail</button>
+        <button mat-raised-button color="primary" (click)="detailButtonClick(exchangeRate)">Detail</button>
       </td>
     </ng-container>
 
