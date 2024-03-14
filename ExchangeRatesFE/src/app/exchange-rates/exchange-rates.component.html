@@ -1,14 +1,14 @@
 <div class="container">
   <div>
     <mat-form-field>
-      <mat-label>Choose source</mat-label>
+      <mat-label>Choose source of data</mat-label>
       <select matNativeControl [(ngModel)]="selectedAddress">
         @for (address of sourceAddresses; track address) {
           <option [value]="address.value">{{ address.viewValue }}</option>
         }
       </select>
     </mat-form-field>
-    <button class="get-button" mat-raised-button color="primary" (click)="fetchResponse(selectedAddress)">Get</button>
+    <button class="get-button" mat-raised-button color="primary" (click)="fetchResponse()">Get</button>
   </div>
 
   <table mat-table [dataSource]="exchangeRates" class="mat-elevation-z8">

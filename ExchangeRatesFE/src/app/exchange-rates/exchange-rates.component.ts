@@ -38,8 +38,6 @@ export class ExchangeRatesComponent {
   ) {
   }
 
-  selectedAddress: string = "";
-
   exchangeRates: ExchangeRate[] = [];
   sourceAddresses: SourceAddresse[] = [
     {
@@ -55,6 +53,7 @@ export class ExchangeRatesComponent {
       viewValue: "Local Back End Application with DB"
     }
   ]
+  selectedAddress = this.sourceAddresses[0].value;
   displayedColumns: string[] = [
     'shortName',
     'validFrom',
@@ -74,8 +73,8 @@ export class ExchangeRatesComponent {
     'button'
   ];
 
-  fetchResponse(address: string) {
-    this.exchangeRatesService.getExchangeRates(address)
+  fetchResponse() {
+    this.exchangeRatesService.getExchangeRates(this.selectedAddress)
       .subscribe(rates => this.exchangeRates = rates.body? rates.body : [])
   }
 
